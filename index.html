@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, target-densitydpi=medium-dpi">
+	<title>vue Title</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div>{{ msgA }}</div>
+		<div>{{ msgB }}</div>
+		<button v-on:click="changeMessage">Change!</button>
+	</div>
+	<script>
+		const vm = new Vue({
+			el:'#app',
+			data: {
+				msgA: 'message A.',
+				msgB: ''
+				//반응성을 가지는 데이터로 사용하려면 미리 빈데이터로도라 설정을 해두어야 한다.
+			},
+			methods:{
+				changeMessage() {
+					this.msgA = 'Changed message A!!!';
+					this.msgB = 'Changed message B!!!'
+				},
+				//computed: {},
+				//computed -> 계산된 데이터
+				watch:{
+					msgA(value){
+						console.log(value)
+					}
+				},
+				//watch -> 데이터가 변경될 때 마다 실행되는 함수
+				created(){
+				
+				},
+				mounted(){
+				
+				}
+			}
+		});
+		console.log(vm)
+		
+	</script>
+
+</body>
+</html>

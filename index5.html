@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, target-densitydpi=medium-dpi">
+	<title>vue Computed 캐싱</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div class="todos">
+			<div>{{ reverseMsg() }}</div>
+			<div>{{ reverseMsg() }}</div>
+			<div>{{ reverseMsg() }}</div> //3번 연산해서 가져옴
+			<div>------------------</div>
+			<div>{{ reversedMsg }}</div>
+			<div>{{ reversedMsg }}</div>
+			<div>{{ reversedMsg }}</div> // 기존에 연산한게 있으므로 1번 연산해서 가져옴
+		</div>
+	</div>
+	<script>
+		const vm = new Vue({
+			el:'#app',
+			data: {
+				msg: 'Hello VVVVVVue!'
+			},
+			computed:{ // 기존에 연산한게 있으므로 1번 연산해서 가져옴
+				reversedMsg(){
+					return this.msg.split('').reverse().join('')
+				}
+			},
+			methods:{ //3번 연산해서 가져옴
+				reverseMsg(){
+					return this.msg.split('').reverse().join('')
+				}
+			}
+		});
+	</script>
+
+</body>
+</html>

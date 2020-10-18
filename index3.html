@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, target-densitydpi=medium-dpi">
+	<title>vue Title</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<style>
+	.normal{
+		color:blue;
+	}
+	.active{
+		color:red;
+	}
+</style>
+<div id="app">
+		<div>{{ msg }}</div>
+		<div v-html="msg2">{{ msg2 }}</div>
+		<div>{{ Math.round(1.9) }}</div>
+		
+		<div v-bind:class="className">{{ msg }}</div>
+		<div :class="className" v-on:click="changClassName">{{ msg }}</div>
+		<div :class="className" @click="changClassName">{{ msg }}</div>
+	</div>
+	<script>
+		const vm = new Vue({
+			el:'#app',
+			data: {
+				msg2: 'Hello asdfsadfasf! <br> Good job~~',
+				msg: 'Hello Vue! !~~~~~',
+				number : 2,
+				className: 'normal'
+			},
+			methods:{
+				changClassName(){
+					this.className = 'active'
+				}
+			}
+		});
+	</script>
+
+</body>
+</html>
