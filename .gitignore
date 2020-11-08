@@ -136,6 +136,7 @@ fabric.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,webstorm
 
+.idea/**/
 codeStyles/
 codeStyles/codeStyleConfig.xml
 modules.xml
