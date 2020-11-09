@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, target-densitydpi=medium-dpi">
+	<title>vue model/ 양방향, 단방향</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<style>
+	
+</style>
+
+<div id="app">
+	<input type="text"
+			@change="message = $event.target.value"
+			:value="message">
+	<div>{{ message }}</div>
+	<input type="text"
+			v-model.lazy="message"><!-- 엔터, blue 면 변화 -->
+	<div>{{ message }}</div>
+	<input type="text"
+			v-model.trim="message"> <!--앞뒤 공백 제거-->
+	<div>{{ message }}</div>
+	<input type="text"
+			v-model.number="message"> <!--숫자 데이터 확인-->
+	<div>{{ typeof message }}</div>
+</div>
+
+	<script>
+		const vm = new Vue({
+			el:'#app',
+			data:{
+				message:'hello~',
+				message1:'hello~',
+			},
+			methods:{
+			
+			}
+		});
+	</script>
+
+</body>
+</html>
