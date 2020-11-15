@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, target-densitydpi=medium-dpi">
+	<title>vue model/ 양방향, 단방향</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<style>
+	
+</style>
+
+	<div id="app">
+		<my-comp :my-msg="message"></my-comp>
+	</div>
+
+	
+	<script>
+
+		Vue.component('my-comp',{
+			template:'<div>{{ myMsg }}</div>',
+			props: {
+				myMsg: {
+					type : [String, Number],
+					default : 'Default', //넘어온 값이 없을 때, 기본값
+					required: true, //필수요소
+					validator : function(value){  //유효성검사
+						return value === 'HELLO'
+
+					}
+				}
+			}
+
+		})
+
+		const vm = new Vue({
+			el : '#app',
+			data(){
+				return {
+					message : 'HELLO'
+				}
+			}
+		})
+	
+	</script>
+
+</body>
+</html>
+</html>
