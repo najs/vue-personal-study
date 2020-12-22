@@ -1,6 +1,8 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 require('@babel/polyfill');
 
 
@@ -42,6 +44,10 @@ module.exports ={
 		new VueLoaderPlugin(),
 		new HtmlWebpackPlugin({
 			template: path.join(__dirname, 'index.html')
-		})
+		}),
+		new CopyPlugin([
+			{ from: "assets/", to: "" }
+		]),
+		new CleanWebpackPlugin()
 	]
 };
