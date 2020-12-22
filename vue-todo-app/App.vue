@@ -3,14 +3,14 @@
 </template>
 
 <script>
-	export default {
-		data () {
-			return {
-				msg: 'Hello!!'
-				
-			}
-		}
-	}
+export default {
+  data () {
+    return {
+      msg: 'Hello!!'
+
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -18,6 +18,6 @@ $color : pink;
 h1 {
 	color: $color;
 	display:flex;
-	
+
 }
 </style>
