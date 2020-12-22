@@ -34,7 +34,7 @@ module.exports ={
 			{
 				test: /\.css$/,
 				use: [
-					'vue-style-loader',
+					'style-loader',
 					'css-loader'
 				]
 			}
@@ -50,5 +50,10 @@ module.exports ={
 			{ from: "assets/", to: "" }
 		]),
 		new CleanWebpackPlugin()
-	]
+	],
+	devServer:{
+		open: false,
+		hot: true
+	},
+	devtool: "eval"
 };

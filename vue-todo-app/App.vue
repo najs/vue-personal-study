@@ -6,7 +6,7 @@
 	export default {
 		data () {
 			return {
-				msg: 'Helloooooo'
+				msg: 'Hellooo!!'
 				
 			}
 		}
@@ -14,7 +14,7 @@
 </script>
 
 <style scoped>
-h1{
+h1 {
 	color:red
 }
 </style>
