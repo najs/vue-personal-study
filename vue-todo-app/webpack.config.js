@@ -43,7 +43,8 @@ module.exports ={
 	plugins: [
 		new VueLoaderPlugin(),
 		new HtmlWebpackPlugin({
-			template: path.join(__dirname, 'index.html')
+			template: path.join(__dirname, 'index.html'),
+			minify: false
 		}),
 		new CopyPlugin([
 			{ from: "assets/", to: "" }
