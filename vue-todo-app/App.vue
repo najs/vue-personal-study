@@ -6,15 +6,18 @@
 	export default {
 		data () {
 			return {
-				msg: 'Hellooo!!'
+				msg: 'Hello!!'
 				
 			}
 		}
 	}
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+$color : pink;
 h1 {
-	color:red
+	color: $color;
+	display:flex;
+	
 }
 </style>

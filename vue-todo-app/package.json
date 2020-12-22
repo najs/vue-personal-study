@@ -1,7 +1,11 @@
 {
   "name": "vue-todo-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Vue todo App",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/najs/vue-personal-study"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,22 +16,32 @@
     "vue",
     "todo"
   ],
+  "browserslist": [
+    "last 2 versions",
+    "ie >= 10"
+  ],
   "author": "js na",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
+    "autoprefixer": "^10.1.0",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^5.0.1",
     "html-webpack-plugin": "^4.5.0",
+    "node-sass": "^4.14.1",
+    "postcss": "^8.2.1",
+    "postcss-loader": "^4.1.0",
+    "sass-loader": "^7.3.1",
     "style-loader": "^2.0.0",
     "vue-loader": "^15.7.2",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.7.2"
   },
   "dependencies": {
     "@babel/polyfill": "^7.7.0",
