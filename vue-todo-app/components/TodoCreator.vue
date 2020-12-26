@@ -1,0 +1,13 @@
+<template>
+	<h1>Todo Creator</h1>
+</template>
+
+<script>
+	export default {
+		name:"TodoCreator"
+	}
+</script>
+
+<style scoped>
+
+</style>
