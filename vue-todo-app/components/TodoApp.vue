@@ -4,20 +4,17 @@
 			<div class="filters">
 				<button
 					:class="{ active:filter === 'all' }"
-					@click="changeFilter('all')"
-				>
+					@click="changeFilter('all')">
 					모든 항목 ({{total}})
 				</button>
 				<button
 					:class="{ active:filter === 'active' }"
-					@click="changeFilter('active')"
-				>
+					@click="changeFilter('active')">
 					해야 할 항목 ({{activeCount}})
 				</button>
 				<button
 					:class="{ active:filter === 'completed' }"
-					@click="changeFilter('completed')"
-				>
+					@click="changeFilter('completed')">
 					완료 항목 ({{completedCount}})
 				</button>
 			</div>
@@ -224,8 +221,6 @@
 						this.deleteTodo(todo)
 					}
 				})
-				
-				
 		},
 		scrollToTop (){
 			scrollTo(0, 0, {
