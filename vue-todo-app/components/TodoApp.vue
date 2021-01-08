@@ -1,6 +1,6 @@
 <template>
 	<div class="todo-app">
-		<div class="todo-app_actions">
+		<div class="todo-app__actions">
 			<div class="filters">
 				<button
 					:class="{ active:filter === 'all' }"
@@ -21,6 +21,35 @@
 					완료 항목 ({{completedCount}})
 				</button>
 			</div>
+			<div class="actions clearfix">
+				<div class="float--left">
+					<label>
+						<input
+							v-model="allDone"
+							type="checkbox">
+						<span class="icon"><i class="material-icons">done_all</i></span>
+					</label>
+				</div>
+				<div class="float--right clearfix">
+					<button
+						class="btn float--left"
+						@click="scrollToTop">
+						<i class="material-icons">expand_less</i>
+					</button>
+					<button
+						class="btn float--left"
+						@click="scrollToBottom">
+						<i class="material-icons">expand_more</i>
+					</button>
+					
+					<button
+						class="btn btn--danger float--left"
+						@click="clearCompleted">
+						<i class="material-icons">delete_sweep</i>
+					</button>
+				</div>
+			</div>
+			
 		</div>
 		
 		<div class="todo-app__list">
@@ -32,7 +61,7 @@
 				@delete-todo="deleteTodo"
 			/>
 		</div>
-		<hr>
+		
 		<todo-creator
 			class="todo-app__creator"
 			@create-todo="createTodo" />
@@ -47,6 +76,8 @@
 	import _find from 'lodash/find'
 	import _assign from 'lodash/assign'
 	import _findIndex from 'lodash/findIndex'
+	import _forEachRight from 'lodash/forEachRight'
+	import scrollTo from 'scroll-to'
 	import TodoCreator from './TodoCreator'
 	import TodoItem from './TodoItem'
 	
@@ -83,6 +114,14 @@
 			},
 			completedCount (){
 				return this.total - this.activeCount
+			},
+			allDone : {
+				get(){
+					return this.total === this.completedCount && this.total > 0
+				},
+				set(checked){
+					this.completeAll(checked)
+				}
 			}
 		},
 		created () {
@@ -145,13 +184,65 @@
 			},
 			changeFilter (filter) {
 				this.filter = filter
-			}
+			},
+			completeAll (checked) {
+				// DB
+				const newTodos = this.db
+					.get('todos')
+					.forEach(todo => {
+						todo.done = checked
+					})
+					.write();
+				
+				// Local todos
+				/*this.todos.forEach(todo => {
+					todo.done = checked
+				})*/
+				this.todos = _cloneDeep(newTodos)
+			},
+			clearCompleted(){
+				/*this.todos.forEach(todo => {
+					if(todo.done){
+						this.deleteTodo(todo)
+					}
+				})*/
+				
+				/*this.todos
+					.reduce((list, todo, index) => {
+						if(todo.done){
+							list.push(index)
+						}
+						return list
+					}, [])
+					.reverse()
+					.forEach(index => {
+						this.deleteTodo(this.todos[index])
+					})*/
+				
+				_forEachRight(this.todos, todo => {
+					if(todo.done) {
+						this.deleteTodo(todo)
+					}
+				})
+				
+				
+		},
+		scrollToTop (){
+			scrollTo(0, 0, {
+				ease: 'linear',
+				duration: 500
+			})
+		},
+		scrollToBottom (){
+			scrollTo(0, document.body.scrollHeight, {
+				ease: 'linear',
+				duration: 500
+			})
 		}
 	}
+}
 </script>
 
-<style scoped lang="scss">
-	button.active{
-		font-weight:700;
-	}
+<style lang="scss">
+	@import "../scss/style";
 </style>

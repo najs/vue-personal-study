@@ -1,6 +1,10 @@
 <template>
 	<div>
-		<button @click="createTodo">add</button>
+		<button
+			class="btn--primary"
+			@click="createTodo">
+			<i class="material-icons">add</i>
+		</button>
 		<input
 			:value="title"
 			:placeholder="placeholder"
@@ -29,7 +33,11 @@
 					return
 				}
 				this.$emit('create-todo', this.title);
-				this.title = ''
+				this.title = '';
+				
+				this.$nextTick(() => {
+					window.scrollTo(0, document.body.scrollHeight)
+				})
 			}
 		}
 	}
