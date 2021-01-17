@@ -2,21 +2,21 @@
 	<div class="todo-app">
 		<div class="todo-app__actions">
 			<div class="filters">
-				<button
-					:class="{ active:filter === 'all' }"
-					@click="changeFilter('all')">
+				<router-link
+					to="all"
+					tag="button">
 					모든 항목 ({{total}})
-				</button>
-				<button
-					:class="{ active:filter === 'active' }"
-					@click="changeFilter('active')">
+				</router-link>
+				<router-link
+					to="active"
+					tag="button">
 					해야 할 항목 ({{activeCount}})
-				</button>
-				<button
-					:class="{ active:filter === 'completed' }"
-					@click="changeFilter('completed')">
+				</router-link>
+				<router-link
+					to="completed"
+					tag="button">
 					완료 항목 ({{completedCount}})
-				</button>
+				</router-link>
 			</div>
 			<div class="actions clearfix">
 				<div class="float--left">
@@ -88,12 +88,12 @@
 			return{
 				db: null,
 				todos : [],
-				filter: 'all'
+				//filter: 'all'
 			}
 		},
 		computed : {
 			filteredTodos () {
-				switch (this.filter) {
+				switch (this.$route.params.id) {
 					case 'all':
 					default:
 						return this.todos;
@@ -179,9 +179,9 @@
 				const foundIndex = _findIndex(this.todos, { id: todo.id });
 				this.$delete(this.todos, foundIndex)
 			},
-			changeFilter (filter) {
+			/*changeFilter (filter) {
 				this.filter = filter
-			},
+			},*/
 			completeAll (checked) {
 				// DB
 				const newTodos = this.db
@@ -240,4 +240,9 @@
 
 <style lang="scss">
 	@import "scss/style";
+	
+	.filters button.router-link-exact-active.router-link-active{
+		background-color:royalblue;
+		color:#fff;
+	}
 </style>
